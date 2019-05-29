@@ -8,11 +8,13 @@ var burger = {
     },
     // The variables cols and vals are arrays.
     create: function (cols, vals, cb) {
+        console.log(`cols: ${cols} vals: ${vals}`);
         orm.create("burgers", cols, vals, function (res) {
             cb(res);
         });
     },
     update: function (objColVals, condition, cb) {
+        console.log(`objColVals: ${JSON.stringify(objColVals, null, 2)} condition: ${condition}`);
         orm.update("burgers", objColVals, condition, function (res) {
             cb(res);
         });

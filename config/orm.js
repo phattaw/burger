@@ -61,6 +61,7 @@ var orm = {
         queryString += ") ";
 
         console.log(queryString);
+        console.log(`vals: ${vals}`);
 
         connection.query(queryString, vals, function (err, result) {
             if (err) {
@@ -79,6 +80,7 @@ var orm = {
         queryString += " WHERE ";
         queryString += condition;
 
+        console.log(`objColVals: ${objColVals} condition: ${condition}`)
         console.log(queryString);
         connection.query(queryString, function (err, result) {
             if (err) {

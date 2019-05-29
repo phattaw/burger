@@ -1,46 +1,45 @@
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
-$(function() {
-    $(".change-sleep").on("click", function(event) {
-      var id = $(this).data("id");
-      var newSleep = $(this).data("newsleep");
-  
-      var newSleepState = {
-        sleepy: newSleep
-      };
-  
-      // Send the PUT request.
-      $.ajax("/api/cats/" + id, {
-        type: "PUT",
-        data: newSleepState
-      }).then(
-        function() {
-          console.log("changed sleep to", newSleep);
-          // Reload the page to get the updated list
-          location.reload();
-        }
-      );
+$(function () {
+    $(".change-devoured").on("click", function (event) {
+        var id = $(this).data("id");
+        var newBurger = $(this).data("newburger");
+
+        var newDevouredState = {
+            devoured: newBurger
+        };
+
+        // Send the PUT request.
+        $.ajax("/api/burgers/" + id, {
+            type: "PUT",
+            data: newDevouredState
+        }).then(
+            function () {
+                console.log("changed devoured to", newDevouredState);
+                // Reload the page to get the updated list
+                location.reload();
+            }
+        );
     });
-  
-    $(".create-form").on("submit", function(event) {
-      // Make sure to preventDefault on a submit event.
-      event.preventDefault();
-  
-      var newCat = {
-        name: $("#ca").val().trim(),
-        sleepy: $("[name=sleepy]:checked").val().trim()
-      };
-  
-      // Send the POST request.
-      $.ajax("/api/cats", {
-        type: "POST",
-        data: newCat
-      }).then(
-        function() {
-          console.log("created new cat");
-          // Reload the page to get the updated list
-          location.reload();
-        }
-      );
+
+    $(".create-form").on("submit", function (event) {
+        // Make sure to preventDefault on a submit event.
+        event.preventDefault();
+
+        var newBurger = {
+            burger_name: $("#ca").val().trim(),
+            devoured: $("[name=devoured]:checked").val().trim()
+        };
+
+        // Send the POST request.
+        $.ajax("/api/burgers", {
+            type: "POST",
+            data: newBurger
+        }).then(
+            function () {
+                console.log("created new burger");
+                // Reload the page to get the updated list
+                location.reload();
+            }
+        );
     });
-  });
-  
+});
